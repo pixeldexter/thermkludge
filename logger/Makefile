@@ -17,6 +17,7 @@ vpath %.S ../common ../ds18b20/
 CSOURCES := logger.c rtc.c flashdb.c
 
 ASOURCES := 	uart.S \
+		ds18b20/ds18b20.S \
 
 FUSES=CKOPT=1,CKSEL=2,BOOTRST=0,BOOTSZ=0,EESAVE=0
 

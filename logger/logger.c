@@ -284,6 +284,8 @@ void powerup_init(void)
  * Logic
  */
 
+#if 0 /* disable until we configure properly */
+
 int8_t ow_searchROM(uint8_t *p_id)
 {
 	static uint8_t *src_addr = 0;
@@ -299,6 +301,8 @@ int8_t ow_searchROM(uint8_t *p_id)
 	}
 	return ((0xff) != mask) ? 1 : 0;
 }
+
+#endif /* disable until we configure properly */
 
 static uint8_t onewire_enum_sensors(void)
 {
