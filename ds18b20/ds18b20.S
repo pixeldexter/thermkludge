@@ -446,12 +446,10 @@ abs16:
 .data
 
 #ifdef SUPPORT_PARASITE_MODE
-cur_mode:
-.byte 0 ; 12bit=0, 11bit=1, 10bit=2, 9bit=3, parasite power?=(bit n.7)
+.comm cur_mode, 1
 #endif // SUPPORT_PARASITE_MODE
 
-cur_sensor_id:
-.byte 0, 0,0,0,0,0,0,0,0
+.comm cur_sensor_id, 9
 
 #ifdef SUPPORT_ROMSEARCH
 last_discrepancy:
