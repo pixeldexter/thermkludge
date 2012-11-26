@@ -477,6 +477,5 @@ abs16:
 .comm cur_sensor_id, 9
 
 #ifdef SUPPORT_ROMSEARCH
-last_discrepancy:
-.byte 0,0
+.comm last_discrepancy, 2
 #endif // SUPPORT_ROMSEARCH
