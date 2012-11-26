@@ -17,7 +17,32 @@
 ******************************************************************************/
 
 #include <avr/io.h>
-#include "conf.h"
+
+#define __paste__(s1,s2) s1##s2
+#define  _paste_(s1,s2)  __paste__(s1,s2)
+
+/* порт к которому подключена линия данных */
+#define DDR_SENSOR   _SFR_IO_ADDR(_paste_(DDR, CONFIG_ONEWIRE_GPIO))
+#define PIN_SENSOR   _SFR_IO_ADDR(_paste_(PIN, CONFIG_ONEWIRE_GPIO))
+#define PORT_SENSOR  _SFR_IO_ADDR(_paste_(PORT,CONFIG_ONEWIRE_GPIO))
+/* ножка к которой подключена линия данных */
+#define NPIN_SENSOR  _paste_(PIN, CONFIG_ONEWIRE_GPBIT)
+
+#ifdef CONFIG_ONEWIRE_CHECKSUM
+#define SUPPORT_CHECKSUM 1
+#endif
+
+#ifdef CONFIG_ONEWIRE_SEARCH_ROM
+#define SUPPORT_ROMSEARCH
+#endif
+
+#ifdef CONFIG_ONEWIRE_PARASITE_POWER
+#define SUPPORT_PARASITE_MODE
+#endif
+
+#ifdef CONFIG_ONEWIRE_COMPLETE
+#define SUPPORT_COMPLETE
+#endif
 
 #include "delay.S"
 

@@ -2,6 +2,14 @@
 #define _LOGGER_CONFIG_H_INC_
 
 
+
+/*
+ * CPU clock speed in HZ as specified by fuses
+ */
+#define F_CPU 2000000
+
+
+
 /*
  * logger functionality
  *
@@ -48,6 +56,22 @@
 #define CONFIG_RTC_HZ        4
 #define CONFIG_RTC_F         32768U
 #undef  CONFIG_RTC_LONG_JIFFIES
+
+
+
+/*
+ * 1-wire settings:
+ *
+ * CONFIG_ONEWIRE_GPIO defines the gpio port identifier where
+ *   sensor(s) are connected to.
+ * CONFIG_ONEWIRE_GPBIT is the bit designator.
+ */
+#define CONFIG_ONEWIRE_GPIO  C
+#define CONFIG_ONEWIRE_GPBIT 5
+#undef  CONFIG_ONEWIRE_CHECKSUM
+#undef  CONFIG_ONEWIRE_SEARCH_ROM
+#undef  CONFIG_ONEWIRE_PARASITE_POWER
+#undef  CONFIG_ONEWIRE_COMPLETE
 
 
 

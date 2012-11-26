@@ -4,7 +4,6 @@
 TARGET:=logger
 FORMAT:=ihex
 CPU := atmega8
-DEFINES = F_CPU=2000000
 FLASHER := avreal-ft2232
 OPTIMIZE := size
 
