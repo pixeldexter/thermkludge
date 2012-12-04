@@ -25,6 +25,11 @@ die "--input missing" unless exists $config->{input};
 open (my $fh, "< $config->{input}") or die $!;
 binmode $fh, ":bytes";
 
+my $ofh = *STDOUT;
+if ( exists $config->{output} ) {
+  open ($ofh, "> $config->{output}") or die $!;
+}
+
 my $pagecount = 0;
 while ( read($fh, my $page, $config->{pagesize}) ) {
 
@@ -34,18 +39,16 @@ while ( read($fh, my $page, $config->{pagesize}) ) {
     my $time = unpack("S", substr($page, $offset, 2));
     $offset += 2;
     last if $time == 65535;
-    printf "%d", $time;
+    printf $ofh "%d", $time;
 
     # read samples
     for(my $i=0; $i!=$config->{sensors}; ++$i) {
       my $data = unpack("s", substr($page, $offset, 2));
       $offset += 2;
-      printf ",%f", $data / 16.0;
+      printf $ofh ",%f", $data / 16.0;
     }
-    printf "\n";
+    printf $ofh "\n";
   }
   $pagecount++;
   last if $pagecount ge $config->{maxpages};
 }
-
-
