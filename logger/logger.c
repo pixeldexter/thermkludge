@@ -371,11 +371,11 @@ void *st_startup(uint8_t events, uint8_t timers)
 	static uint8_t init__;
 	if ( ! init__ )
 	{
-		set_led(led_green);
+		was_pressed = button_is_pressed();
+		(void)(was_pressed ? set_led(led_red) : set_led(led_green));
 		set_alarm(alarm0,
 			  hz_to_jiffies(CONFIG_STARTUP_DELAY * CONFIG_RTC_HZ)
 			);
-		was_pressed = button_is_pressed();
 		init__ = ~0;
 	}
 
