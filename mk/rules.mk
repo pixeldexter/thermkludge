@@ -65,7 +65,7 @@ DEPDIR ?= .dep
 #
 AOBJECTS:=$(addprefix .obj/,$(notdir $(ASOURCES:.S=.o)))
 COBJECTS:=$(addprefix .obj/,$(notdir $(CSOURCES:.c=.o)))
-CXXOBJECTS:=$(addprefix .obj/,$(notdir $(CXXSOURCES:.c=.o)))
+CXXOBJECTS:=$(addprefix .obj/,$(notdir $(CXXSOURCES:.cpp=.o)))
 OBJECTS:=$(AOBJECTS) $(COBJECTS) $(CXXOBJECTS)
 
 all: build
