@@ -92,7 +92,7 @@ enum led_state
 	led_red,
 };
 
-static __attribute__((always_inline)) void set_led(uint8_t state)
+inline static __attribute__((always_inline)) void set_led(uint8_t state)
 {
 	switch (state)
 	{
@@ -111,7 +111,7 @@ static __attribute__((always_inline)) void set_led(uint8_t state)
 	}
 }
 
-static __attribute__((always_inline)) uint8_t get_led(void)
+inline static __attribute__((always_inline)) uint8_t get_led(void)
 {
 	return led_port_ & _BV(led_bit_);
 }
@@ -329,7 +329,7 @@ uint8_t sample(void)
 		+ sizeof(int16_t) * count
 		;
 	unsigned char buf[sz_rec];
-	struct record *p_rec = &buf;
+	struct record *p_rec = (void*)&buf;
 
 	set_led(led_green);
 

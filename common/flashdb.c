@@ -89,6 +89,7 @@ static page_ofs_t __find_write_offset(struct page_openpage *page)
 
 static int __page_is_dirty(struct page_openpage *page)
 {
+	((void)page); // suppress warning
 	return 1;
 }
 
@@ -253,6 +254,8 @@ flashdb_return_type flashdb_read(uint8_t stream, void *buf, size_t sz)
 flashdb_return_type flashdb_read(void *buf, size_t sz)
 #endif
 {
+	((void)buf);
+	((void)sz);
 	return -ENXIO;
 }
 

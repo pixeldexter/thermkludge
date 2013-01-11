@@ -41,7 +41,7 @@ COMMON_FLAGS += -g
 endif
 # defaults: other options
 COMMON_FLAGS += -mmcu=$(CPU)
-COMMON_FLAGS += -w -Wall -Wextra
+COMMON_FLAGS += -Wall -Wextra
 COMMON_FLAGS += $(addprefix -D,$(DEFINES))
 COMMON_FLAGS += $(addprefix -I,$(INCLUDES)) -I$(AVRLIB)/include
 
