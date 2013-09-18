@@ -36,7 +36,7 @@
 #define UART_BAUDRATE 12
 #elif ( CONFIG_UART_BAUDRATE ==  9600 )
 #define UART_BAUDRATE 63
-#elif
+#else
 #error baudrate not supported
 #endif
 
